@@ -1,2 +1,2 @@
-# 42-malloc
+# 42-LibftASM
 42 Project
