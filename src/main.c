@@ -17,7 +17,9 @@ int	test_ft_tolower()
 	if ((str2 = strdup(str)) == NULL)
 		exit(-1);
 	// -------
+	printf("exec|");
 	str2[1] = ft_tolower(str2[1]);
+	printf("|endexec\n");
 	str[1] = tolower(str[1]);
 	// -------
 	if (strcmp(str, str2) != 0)
