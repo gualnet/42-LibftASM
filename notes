@@ -1,0 +1,5 @@
+* Le premier parametre passé en arg d'une fonction se retourve dans 'RDI'
+
+* La valeur de retour d'une fonction se passe par 'RAX'
+
+* 
