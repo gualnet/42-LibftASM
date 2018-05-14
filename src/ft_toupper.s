@@ -3,21 +3,20 @@ section	.bss
 section	.data
 
 section	.text
-	global	_ft_tolower
+	global	_ft_toupper
 
-_ft_tolower:
-	;enter
+_ft_toupper:
 	push rbp
-	;je sauvegarde l'adresse de la stack ?
 	mov rbp, rsp
+
 ;if:
-	cmp rdi, 0x41
-	jl	endif_out
-	cmp rdi, 0x5a
+	cmp rdi, 97
+	jl endif_out
+	cmp rdi, 122
 	jg endif_out
 
 endif_in:
-	add rdi, 0x20
+	sub rdi, 32
 	mov rax, rdi
 	jmp end
 
@@ -25,6 +24,5 @@ endif_out:
 	mov rax, rdi
 
 end:
-	;leave
 	pop rbp
 	ret

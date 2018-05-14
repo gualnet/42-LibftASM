@@ -6,21 +6,22 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/05/11 17:54:48 by galy             ###   ########.fr        #
+#    Updated: 2018/05/14 15:15:22 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	=	
+NAME	=	libfts.a
+CC		=	clang
 CFLAGS	=	-Wall -Werror -Wextra
 # CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
-CC		=	clang
-NA		=	nasm
+NA		=	/usr/local/bin/nasm
+NAFLAG	=	-f macho64
 LD		=	ld
 
 ####DIRECTORY####
 
 SRCDIR		=	src
-OBJDIR		=	objs
+OBJDIR		=	obj
 INCDIR		=	inc
 
 ####COLOR-SET####
@@ -46,20 +47,30 @@ CUR_CLR		=	\033[K
 ####SOURCE####
 
 SRC			= \
-	ft_tolower.s
+	ft_tolower.s	ft_toupper.s	ft_bzero.s
 
 
 ####FUNC####
 
-DOT_O = $(SRC:.s=.o)
+OBJ			= $(SRC:.s=.o)
+OBJP		= $(addprefix $(OBJDIR)/, $(SRC:.s=.o))
 
 
 ####RULEZ####
 
-all			: OBJD
-	@$(CC) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
-	@$(NA) -f macho64 $(SRCDIR)/$(SRC) -o $(OBJDIR)/$(SRC:.s=.o)
-	@$(CC) $(OBJDIR)/main.o $(OBJDIR)/$(DOT_O)
+all			: OBJD $(NAME)
+	@nasm -v
+
+$(NAME) : $(OBJP)
+	$(CC) -I$(INCDIR) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
+	@ar -rc $(NAME) $^
+	$(CC) $(OBJDIR)/main.o $^ -o main_test -L. -lfts
+#	@echo $@
+#	@echo $(SRC)
+#	@echo $(OBJ)
+#	@echo $?
+#	@echo $^
+#	@echo $(OBJP)
 
 clean		:
 	$(RM) -r $(OBJDIR)
@@ -67,12 +78,16 @@ clean		:
 mini_clean	:
 
 fclean		: clean
-	$(RM) a.out
+	$(RM) $(NAME)
+	$(RM) main_test
 
 re			: fclean print_inter_line all
 
 
 ####MORE_RULEZ####
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.s
+	$(NA) $(NAFLAG) $^ -o $@
 
 test		:
 	$(CC) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
