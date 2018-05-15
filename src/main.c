@@ -6,6 +6,72 @@
 
 #include "libfts.h"
 
+int	test_ft_isalnum()
+{
+	int		ret1 = 0;
+	int		ret2 = 0;
+	int		i = 0;
+	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+
+	while (str[i] != '\0')
+	{
+		ret1 = isalnum(str[i]);
+		ret2 = ft_isalnum(str[i]);
+		if (ret1 != ret2)
+		{
+			printf("Err i = %d | c = %c\n", i, str[i]);
+			return (-1);
+		}
+		i++;
+	}
+	printf("TEST 1: OK\n");
+	return (1);
+}
+
+int	test_ft_isdigit()
+{
+	int		ret1 = 0;
+	int		ret2 = 0;
+	int		i = 0;
+	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+
+	while (str[i] != '\0')
+	{
+		ret1 = isdigit(str[i]);
+		ret2 = ft_isdigit(str[i]);
+		if (ret1 != ret2)
+		{
+			printf("Err i = %d | c = %c\n", i, str[i]);
+			return (-1);
+		}
+		i++;
+	}
+	printf("TEST 1: OK\n");
+	return (1);
+}
+
+int	test_ft_isalpha()
+{
+	int		ret1 = 0;
+	int		ret2 = 0;
+	int		i = 0;
+	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+
+	while (str[i] != '\0')
+	{
+		ret1 = isalpha(str[i]);
+		ret2 = ft_isalpha(str[i]);
+		if (ret1 != ret2)
+		{
+			printf("Err i = %d | c = %c\n", i, str[i]);
+			return (-1);
+		}
+		i++;
+	}
+	printf("TEST 1: OK\n");
+	return (1);
+}
+
 int	test_ft_strcat()
 {
 	char	str1[30];
@@ -188,9 +254,21 @@ int	test_ft_tolower()
 
 int	main()
 {
-	printf("\n\tFT_strcat:\n");
-	if (test_ft_strcat() == -1)
-		printf("strcat : err\n");
+	printf("\n\tFT_isalnum:\n");
+	if (test_ft_isalnum() == -1)
+		printf("isalnum : err\n");
+
+	// printf("\n\tFT_isdigit:\n");
+	// if (test_ft_isdigit() == -1)
+	// 	printf("isdigit : err\n");
+
+	// printf("\n\tFT_isalpha:\n");
+	// if (test_ft_isalpha() == -1)
+	// 	printf("isalpha : err\n");
+
+	// printf("\n\tFT_strcat:\n");
+	// if (test_ft_strcat() == -1)
+	// 	printf("strcat : err\n");
 	
 	// printf("\n\tFT_bzero:\n");
 	// if (test_ft_bzero() == -1)
