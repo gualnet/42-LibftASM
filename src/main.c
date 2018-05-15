@@ -6,9 +6,136 @@
 
 #include "libfts.h"
 
+int	test_ft_strdup()
+{
+	char	*base = "Le mot « aviation »";
+	char	*str1 = NULL;
+	char	*str2 = NULL;
+
+	str1 = strdup(base);
+	str2 = ft_strdup(base);
+	if (strcmp(str1, str2) != 0)
+	{
+		printf("strdup     [%p][%s]\n", str1, str1);
+		printf("strdup     [%p][%s]\n", str2, str2);
+		printf("TEST 1: NOK\n");
+		return (-1);
+	}
+	free(str1);
+	free(str2);
+	printf("TEST 1: OK\n");
+
+	base = "Le mot « aviation » (du latin « avis », qui signifie « oiseau »2, et du suffixe « atio ») a été employé pour la première fois par Gabriel de La Landelle, en 1863,\ndans le livre Aviation ou navigation aérienne sans ballon, un ouvrage rendant compte des tentatives d'envol de Jean-Marie Le Bris dans un appareil plus lourd que l'air.";
+	str1 = strdup(base);
+	str2 = ft_strdup(base);
+	if (strcmp(str1, str2) != 0)
+	{
+		printf("strdup     [%p][%s]\n", str1, str1);
+		printf("strdup     [%p][%s]\n", str2, str2);
+		printf("TEST 2: NOK\n");
+		return (-1);
+	}
+	free(str1);
+	free(str2);
+	printf("TEST 2: OK\n");
+
+	base = "";
+	str1 = strdup(base);
+	str2 = ft_strdup(base);
+	if (strcmp(str1, str2) != 0)
+	{
+		printf("strdup     [%p][%s]\n", str1, str1);
+		printf("strdup     [%p][%s]\n", str2, str2);
+		printf("TEST 3: NOK\n");
+		return (-1);
+	}
+	free(str1);
+	free(str2);
+	printf("TEST 3: OK\n");
+
+	// // CRASH TEST
+	// base = NULL;
+	// str1 = strdup(base);
+	// str2 = ft_strdup(base);
+	// // if (strcmp(str1, str2) == 0)
+	// // {
+	// // 	printf("strdup     [%p][%s]\n", str1, str1);
+	// // 	printf("strdup     [%p][%s]\n", str2, str2);
+	// // 	printf("TEST 4: NOK\n");
+	// // 	return (-1);
+	// // }
+	// // free(str1);
+	// // free(str2);
+	// // printf("TEST 4: OK\n");
+	return (1);
+}
+
+int	test_ft_memcpy()
+{
+	size_t	size = 80;
+	char	*base = "Le loup gris est l'un des animaux les plus connus et les plus étudiés au monde, avec probablement plus de livres écrits à son sujet que toute autre espèce sauvage3.";
+	char	*str1;
+	char	*ret1;
+
+	str1 = malloc(size);
+	bzero(str1, size);
+	ret1 = NULL;
+	ret1 = memcpy(str1, base, strlen(base));
+	printf("memcpy    [%p - %p][%s]\n", str1, ret1, str1);
+
+	bzero(str1, size);
+	ret1 = NULL;
+	ret1 = ft_memcpy(str1, base, strlen(base));
+	printf("ft_memcpy [%p - %p][%s]\n", str1, ret1, str1);
+
+	free(str1);
+	return (1);
+}
+
+int	test_ft_memset()
+{
+	size_t	size = 80;
+	char	*str1;
+	char	*ret1;
+	char	*str2;
+	char	*ret2;
+
+	str1 = malloc(size);
+	bzero(str1, size);
+	str2 = malloc(size);
+	bzero(str2, size);
+
+	ret1 = memset(str1, '$', 12);
+	printf("memset [%p - %p][%s]\n", str1, ret1, str1);
+	ret2 = ft_memset(str2, '$', 12);
+	printf("memset [%p - %p][%s]\n", str2, ret2, str2);
+	if (str2 != ret2 || strcmp(str1, str2) != 0)
+	{
+		printf("TEST 1: NOK\n");
+		return (-1);
+	}
+	printf("TEST 1: OK\n");
+
+	bzero(str1, size);
+	bzero(str2, size);
+	ret1 = memset(str1, '@', 0);
+	printf("memset [%p - %p][%s]\n", str1, ret1, str1);
+	ret2 = ft_memset(str2, '@', 0);
+	printf("memset [%p - %p][%s]\n", str2, ret2, str2);
+	if (str2 != ret2 || strcmp(str1, str2) != 0)
+	{
+		printf("TEST 2: NOK\n");
+		return (-1);
+	}
+	printf("TEST 2: OK\n");
+
+	free(str1);
+	free(str2);
+	return (1);
+}
+
 int	test_ft_puts()
 {
-	int i = 0;
 	char *str = "coucou je suis moi !";
 	int ret1 = 0;
 	int ret2 = 0;
@@ -198,8 +325,6 @@ int	test_ft_strcat()
 	char	*res1;
 	char	*res2;
 	char	*base = "salut, je suis moi !";
-	size_t	size1;
-	size_t	size2;
 
 	bzero(str1, 30);
 	str1[0] = 'X';
@@ -264,7 +389,7 @@ int	test_ft_toupper()
 	char	str[5];
 	char	*str2;
 	char	*str3 = "_()*OUGI897fiyvhb)[t97rf8yit97r8fYIV6t97rfiy98t7iu";
-	int		i = 0;
+	size_t	i = 0;
 	
 	str[0] = 'A';
 	str[1] = 'z';
@@ -320,7 +445,7 @@ int	test_ft_tolower()
 	char	str[5];
 	char	*str2;
 	char	*str3 = "_()*OUGI897fiyvhb)[t97rf8yit97r8fYIV6t97rfiy98t7iu";
-	int		i = 0;
+	size_t	i = 0;
 	
 	str[0] = 'A';
 	str[1] = 'z';
@@ -373,9 +498,22 @@ int	test_ft_tolower()
 
 int	main()
 {
-	printf("\n\tFT_puts:\n");
-	if (test_ft_puts() == -1)
-		printf("puts : err\n");
+
+	printf("\n\tFT_strdup:\n");
+	if (test_ft_strdup() == -1)
+		printf("strdup : err\n");
+
+	// printf("\n\tFT_memcpy:\n");
+	// if (test_ft_memcpy() == -1)
+	// 	printf("memcpy : err\n");
+
+	// printf("\n\tFT_memset:\n");
+	// if (test_ft_memset() == -1)
+	// 	printf("memset : err\n");
+
+	// printf("\n\tFT_puts:\n");
+	// if (test_ft_puts() == -1)
+	// 	printf("puts : err\n");
 
 	// printf("\n\tFT_strlen:\n");
 	// if (test_ft_strlen() == -1)

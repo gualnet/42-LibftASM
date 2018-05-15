@@ -6,7 +6,7 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/05/15 14:31:21 by galy             ###   ########.fr        #
+#    Updated: 2018/05/15 20:35:05 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,8 @@ SRC			= \
 	ft_tolower.s	ft_toupper.s	ft_bzero.s	\
 	ft_strcat.s		ft_isalpha.s	ft_isdigit.s\
 	ft_isalnum.s	ft_isascii.s	ft_isprint.s\
-	ft_strlen.s		ft_puts.s
+	ft_strlen.s		ft_puts.s		ft_memset.s	\
+	ft_memcpy.s		ft_strdup.s
 
 
 ####FUNC####
@@ -65,9 +66,9 @@ all			: OBJD $(NAME)
 	@nasm -v
 
 $(NAME) : $(OBJP)
-	$(CC) -I$(INCDIR) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
 	@ar -rc $(NAME) $^
-	$(CC) $(OBJDIR)/main.o $^ -o main_test -L. -lfts
+	$(CC) $(CFLAGS) $(OBJDIR)/main.o $^ -o main_test -L. -lfts
 #	@echo $@
 #	@echo $(SRC)
 #	@echo $(OBJ)

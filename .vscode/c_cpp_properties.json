@@ -9,7 +9,6 @@
                 "limitSymbolsToIncludedHeaders": true
             },
             "includePath": [
-                "${workspaceFolder}",
                 "${workspaceFolder}/inc"
             ],
             "defines": [],
