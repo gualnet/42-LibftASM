@@ -6,6 +6,125 @@
 
 #include "libfts.h"
 
+int	test_ft_puts()
+{
+	int i = 0;
+	char *str = "coucou je suis moi !";
+	int ret1 = 0;
+	int ret2 = 0;
+
+	ret1 = puts(str);
+	// printf("ret puts   : %d\n", ret1);
+	ret2 = ft_puts(str);
+	// printf("ret ft_puts: %d\n", ret2);
+	if (ret1 > 0 && ret2 <= 0)
+	{
+		printf("TEST 1: NOK\n");
+		return (-1);
+	}
+	printf("TEST 1: OK\n");
+
+	str = "";
+	ret1 = puts(str);
+	// printf("ret puts   : %d\n", ret1);
+	ret2 = ft_puts(str);
+	// printf("ret ft_puts: %d\n", ret2);
+	if (ret1 > 0 && ret2 <= 0)
+	{
+		printf("TEST 2: NOK\n");
+		return (-1);
+	}
+	printf("TEST 2: OK\n");
+
+	str = NULL;
+	ret1 = puts(str);
+	// printf("ret puts   : %d\n", ret1);
+	ret2 = ft_puts(str);
+	// printf("ret ft_puts: %d\n", ret2);
+	if (ret1 > 0 && ret2 <= 0)
+	{
+		printf("TEST 3: NOK\n");
+		return (-1);
+	}
+	printf("TEST 3: OK\n");
+
+	return (1);
+}
+
+int	test_ft_strlen()
+{
+	int		ret1 = 0;
+	int		ret2 = 0;
+	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+	ret1 = ft_strlen(str);
+	ret2 = strlen(str);
+	if (ret1 != ret2)
+	{
+		printf("TEST 1: NOK\n");
+		return (-1);
+	}
+	else
+		printf("TEST 1: OK\n");
+	str = "";
+	ret1 = ft_strlen(str);
+	ret2 = strlen(str);
+	if (ret1 != ret2)
+	{
+		printf("TEST 2: NOK\n");
+		return (-1);
+	}
+	else
+		printf("TEST 2: OK\n");
+
+
+	
+	return (1);
+}
+
+int	test_ft_isprint()
+{
+	int		ret1 = 0;
+	int		ret2 = 0;
+	int		i = 0;
+	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+
+	while (str[i] != '\0')
+	{
+		ret1 = isprint(str[i]);
+		ret2 = ft_isprint(str[i]);
+		if (ret1 != ret2)
+		{
+			printf("Err i = %d | c = %c\n", i, str[i]);
+			return (-1);
+		}
+		i++;
+	}
+	printf("TEST 1: OK\n");
+	return (1);
+}
+
+int	test_ft_isascii()
+{
+	int		ret1 = 0;
+	int		ret2 = 0;
+	int		i = 0;
+	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+
+	while (str[i] != '\0')
+	{
+		ret1 = isascii(str[i]);
+		ret2 = ft_isascii(str[i]);
+		if (ret1 != ret2)
+		{
+			printf("Err i = %d | c = %c\n", i, str[i]);
+			return (-1);
+		}
+		i++;
+	}
+	printf("TEST 1: OK\n");
+	return (1);
+}
+
 int	test_ft_isalnum()
 {
 	int		ret1 = 0;
@@ -254,9 +373,25 @@ int	test_ft_tolower()
 
 int	main()
 {
-	printf("\n\tFT_isalnum:\n");
-	if (test_ft_isalnum() == -1)
-		printf("isalnum : err\n");
+	printf("\n\tFT_puts:\n");
+	if (test_ft_puts() == -1)
+		printf("puts : err\n");
+
+	// printf("\n\tFT_strlen:\n");
+	// if (test_ft_strlen() == -1)
+	// 	printf("strlen : err\n");
+
+	// printf("\n\tFT_isprint:\n");
+	// if (test_ft_isprint() == -1)
+	// 	printf("isprint : err\n");
+
+	// printf("\n\tFT_isascii:\n");
+	// if (test_ft_isascii() == -1)
+	// 	printf("isascii : err\n");
+
+	// printf("\n\tFT_isalnum:\n");
+	// if (test_ft_isalnum() == -1)
+	// 	printf("isalnum : err\n");
 
 	// printf("\n\tFT_isdigit:\n");
 	// if (test_ft_isdigit() == -1)

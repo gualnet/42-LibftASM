@@ -6,7 +6,7 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/05/15 11:39:24 by galy             ###   ########.fr        #
+#    Updated: 2018/05/15 14:31:21 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,8 @@ CUR_CLR		=	\033[K
 SRC			= \
 	ft_tolower.s	ft_toupper.s	ft_bzero.s	\
 	ft_strcat.s		ft_isalpha.s	ft_isdigit.s\
-	ft_isalnum.s
+	ft_isalnum.s	ft_isascii.s	ft_isprint.s\
+	ft_strlen.s		ft_puts.s
 
 
 ####FUNC####

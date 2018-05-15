@@ -6,7 +6,7 @@
 /*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:19:15 by galy              #+#    #+#             */
-/*   Updated: 2018/05/14 19:27:19 by galy             ###   ########.fr       */
+/*   Updated: 2018/05/15 14:31:09 by galy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,10 @@ int					ft_isprint(int c);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 
-//puts ??
+int					ft_puts(const char *s);
+
+size_t				ft_strlen(const char *s);
+void				*ft_memset(void *b, int c, size_t len);
+void				*ft_memcpy(void *dst, const void *src, size_t n);
+char				*ft_strdup(const char *s1);
 #endif
