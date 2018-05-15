@@ -8,23 +8,38 @@
 
 int	test_ft_strcat()
 {
-	char	*str1;
-	char	*str2;
+	char	str1[30];
+	char	str2[30];
+	char	*res1;
+	char	*res2;
 	char	*base = "salut, je suis moi !";
 	size_t	size1;
 	size_t	size2;
 
-	str1 = strdup(base);
-	str2 = malloc(strlen(str1) + 1);
-	bzero(str2, strlen(str1) + 1);
-	printf("str1[%s]\n", str1);
-	printf("str2[%s]\n", str2);
-	
-	strcat(str2, str1);
-	
-	printf("str1[%s]\n", str1);
-	printf("str2[%s]\n", str2);
+	bzero(str1, 30);
+	str1[0] = 'X';
+	str1[1] = 'y';
+	str1[2] = 'Z';
+	str1[3] = '-';
+	str1[4] = '>';
+	bzero(str2, 30);
+	str2[0] = 'X';
+	str2[1] = 'y';
+	str2[2] = 'Z';
+	str2[3] = '-';
+	str2[4] = '>';
 
+	res1 = ft_strcat(str1, base);
+	res2 = strcat(str2, base);
+	if (strcmp(res1, res2) != 0)
+	{
+		printf("str1[%s]\n", str1);
+		printf("str2[%s]\n", str2);
+		printf("ft_strcat: [%s]\n", res1);
+		printf("strcat:    [%s]\n", res2);
+	}
+	else
+		printf("TEST 1: OK\n");
 	return (1);
 }
 

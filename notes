@@ -1,4 +1,5 @@
-* Le premier parametre passé en arg d'une fonction se retourve dans 'RDI'
+* Les parametres passé en arg d'une fonction se retourve dans
+RDI - RSI - RDX - RCX - R8 - R9
 
 * La valeur de retour d'une fonction se passe par 'RAX'
 

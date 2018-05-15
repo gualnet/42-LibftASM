@@ -6,7 +6,7 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/05/14 15:15:22 by galy             ###   ########.fr        #
+#    Updated: 2018/05/15 09:24:31 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ CUR_CLR		=	\033[K
 ####SOURCE####
 
 SRC			= \
-	ft_tolower.s	ft_toupper.s	ft_bzero.s
+	ft_tolower.s	ft_toupper.s	ft_bzero.s	\
+	ft_strcat.s
 
 
 ####FUNC####
