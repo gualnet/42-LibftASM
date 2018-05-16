@@ -6,6 +6,40 @@
 
 #include "libfts.h"
 
+void	test_buff()
+{
+	char test[100];
+}
+
+void	*ft_cat(int fd);
+
+int	test_ft_cat()
+{
+	int		fd;
+	char	*path;
+	path = "test_cat_00";
+	path = "inc/libfts.h";
+	path = "Makefile";
+	// printf("file path: ");
+	// scanf("%s", path);
+	
+	fd = open(path, O_RDONLY | O_NONBLOCK);
+	// if (fd < 0)
+	printf("Attention fd = %d\n", fd);
+	
+	void *x = ft_cat(fd);
+	// printf("RSP [%p]\n", x);
+	// printf("\nRET [%d]\n", (int)x);
+	// printf("RSP [%d]\n", *(int*)x);
+	// printf("RSP [%s]\n", (char*)x);
+	// printf("FD  [%p]\n", &fd);
+	// printf("FD  [%d]\n", fd);
+
+	close(fd);
+	printf("\nFT_CAT END\n");
+	return (1);
+}
+
 int	test_ft_strdup()
 {
 	char	*base = "Le mot « aviation »";
@@ -499,9 +533,13 @@ int	test_ft_tolower()
 int	main()
 {
 
-	printf("\n\tFT_strdup:\n");
-	if (test_ft_strdup() == -1)
-		printf("strdup : err\n");
+	printf("\n\tFT_cat:\n");
+	if (test_ft_cat() == -1)
+		printf("cat : err\n");
+
+	// printf("\n\tFT_strdup:\n");
+	// if (test_ft_strdup() == -1)
+	// 	printf("strdup : err\n");
 
 	// printf("\n\tFT_memcpy:\n");
 	// if (test_ft_memcpy() == -1)

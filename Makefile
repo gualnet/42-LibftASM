@@ -6,14 +6,15 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/05/15 20:35:05 by galy             ###   ########.fr        #
+#    Updated: 2018/05/16 11:31:30 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libfts.a
 CC		=	clang
-CFLAGS	=	-Wall -Werror -Wextra
+#CFLAGS	=	-Wall -Werror -Wextra
 # CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS	=	
 NA		=	/usr/local/bin/nasm
 NAFLAG	=	-f macho64
 LD		=	ld
@@ -51,7 +52,7 @@ SRC			= \
 	ft_strcat.s		ft_isalpha.s	ft_isdigit.s\
 	ft_isalnum.s	ft_isascii.s	ft_isprint.s\
 	ft_strlen.s		ft_puts.s		ft_memset.s	\
-	ft_memcpy.s		ft_strdup.s
+	ft_memcpy.s		ft_strdup.s		ft_cat.s
 
 
 ####FUNC####
