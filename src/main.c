@@ -6,36 +6,37 @@
 
 #include "libfts.h"
 
-void	test_buff()
-{
-	char test[100];
-}
-
-void	*ft_cat(int fd);
-
 int	test_ft_cat()
 {
 	int		fd;
-	char	*path;
-	path = "test_cat_00";
-	path = "inc/libfts.h";
-	path = "Makefile";
+	int		x;
+	char	*path1;
+	char	*path2;
+	char	*path3;
+	path1 = "test_cat_00";
+	path2 = "inc/libfts.h";
+	path3 = "Makefile";
 	// printf("file path: ");
 	// scanf("%s", path);
 	
-	fd = open(path, O_RDONLY | O_NONBLOCK);
-	// if (fd < 0)
-	printf("Attention fd = %d\n", fd);
-	
-	void *x = ft_cat(fd);
-	// printf("RSP [%p]\n", x);
-	// printf("\nRET [%d]\n", (int)x);
-	// printf("RSP [%d]\n", *(int*)x);
-	// printf("RSP [%s]\n", (char*)x);
-	// printf("FD  [%p]\n", &fd);
-	// printf("FD  [%d]\n", fd);
-
+	fd = open(path1, O_RDONLY | O_NONBLOCK);
+	if (fd < 0)
+		printf("Attention fd = %d\n", fd);
+	x = ft_cat(fd);
 	close(fd);
+	
+	fd = open(path2, O_RDONLY | O_NONBLOCK);
+	if (fd < 0)
+		printf("Attention fd = %d\n", fd);
+	x = ft_cat(fd);
+	close(fd);
+	
+	fd = open(path3, O_RDONLY | O_NONBLOCK);
+	if (fd < 0)
+		printf("Attention fd = %d\n", fd);
+	x = ft_cat(fd);
+	close(fd);
+
 	printf("\nFT_CAT END\n");
 	return (1);
 }
