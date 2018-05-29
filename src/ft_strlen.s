@@ -9,17 +9,13 @@ _ft_strlen:
 	push rbp
 	mov rbp, rsp
 
-	mov rcx, 0
-
-lp:
-	cmp [rdi + rcx], byte 0
-	je end
-	inc rcx
-	jmp lp
+	xor rax,rax 	; reset al through rax reg
+	mov dx, di		; moving string addr into dx reg
+	mov cx, 1		; setting count reg at 1;
+	cld				; set la direction du counter (inc/dec)
+	repne scasb		; REP while Not Equal and SCan A String
+	sub ax, cx		
 
 end:
-	mov rax, rcx
 	pop rbp
 	ret
-
-
