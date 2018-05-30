@@ -1,15 +1,6 @@
-section	.bss
-	
-
-section	.data
-	
 
 section	.text
 	global	_ft_bzero
-
-; arguments:
-; s est dans rdi
-; n est dans rsi
 
 _ft_bzero:
 	push rbp

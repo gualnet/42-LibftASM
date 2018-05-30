@@ -223,6 +223,8 @@ int	test_ft_strlen()
 	if (ret1 != ret2)
 	{
 		printf("TEST 1: NOK\n");
+		printf("ret ft [%d]\n", ret1);
+		printf("ret    [%d]\n", ret2);
 		return (-1);
 	}
 	else
@@ -534,9 +536,9 @@ int	test_ft_tolower()
 int	main()
 {
 
-	printf("\n\tFT_cat:\n");
-	if (test_ft_cat() == -1)
-		printf("cat : err\n");
+	// printf("\n\tFT_cat:\n");
+	// if (test_ft_cat() == -1)
+	// 	printf("cat : err\n");
 
 	// printf("\n\tFT_strdup:\n");
 	// if (test_ft_strdup() == -1)
@@ -546,9 +548,9 @@ int	main()
 	// if (test_ft_memcpy() == -1)
 	// 	printf("memcpy : err\n");
 
-	// printf("\n\tFT_memset:\n");
-	// if (test_ft_memset() == -1)
-	// 	printf("memset : err\n");
+	printf("\n\tFT_memset:\n");
+	if (test_ft_memset() == -1)
+		printf("memset : err\n");
 
 	// printf("\n\tFT_puts:\n");
 	// if (test_ft_puts() == -1)

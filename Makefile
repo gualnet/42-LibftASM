@@ -6,7 +6,7 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/05/17 21:01:21 by galy             ###   ########.fr        #
+#    Updated: 2018/05/18 10:18:32 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,12 +70,6 @@ $(NAME) : $(OBJP)
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
 	@ar -rc $(NAME) $^
 	$(CC) $(CFLAGS) $(OBJDIR)/main.o $^ -o main_test -L. -lfts
-#	@echo $@
-#	@echo $(SRC)
-#	@echo $(OBJ)
-#	@echo $?
-#	@echo $^
-#	@echo $(OBJP)
 
 clean		:
 	$(RM) -r $(OBJDIR)
