@@ -7,7 +7,7 @@ section	.bss
 section	.data
 string:
 	.line_ret db 10
-	.null db "(null)", 10
+	.null db "(null)", 10, 0
 
 section	.text
 	global	_ft_puts

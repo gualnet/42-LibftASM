@@ -8,16 +8,10 @@ section	.text
 _ft_memcpy:
 	push rbp
 	mov rbp, rsp
-
-	mov rcx, 0
-
-lp:
-	cmp rcx, rdx
-	je end
-	mov r10, [rsi + rcx]
-	mov [rdi + rcx], r10
-	inc rcx
-	jmp lp
+	
+	mov rcx, rdx
+	cld
+	rep movsb
 
 end:
 	mov rax, rdi

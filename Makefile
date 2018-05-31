@@ -6,7 +6,7 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/05/18 10:18:32 by galy             ###   ########.fr        #
+#    Updated: 2018/05/31 20:17:55 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	libfts.a
 CC		=	clang
 #CFLAGS	=	-Wall -Werror -Wextra
 # CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
-CFLAGS	=	
+# CFLAGS	=	-fsanitize=address
 NA		=	/usr/local/bin/nasm
 NAFLAG	=	-f macho64
 LD		=	ld

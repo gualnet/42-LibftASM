@@ -1,43 +1,41 @@
-section	.bss
-
-section	.data
 
 section	.text
 	global	_ft_strdup
 	extern	_ft_strlen
+	extern	_strlen
+	extern	_ft_memcpy
 	extern	_malloc
 
 _ft_strdup:
 	push rbp
 	mov rbp, rsp
+	sub rsp, 64
 
 	; recup len de str
-	mov r15, rdi
-	call _ft_strlen
-	mov r11, rax ; r11 - len de la str
-
+	mov [rsp], rdi	; -> rsp - 0 => param 1: ptr source string
+	call _strlen
+	mov r15, rax	; => string len (\0 excluded)
+	
 	; malloc(len)
-	mov rdi, r11
+	mov rdi, rax
+	inc rdi
 	call _malloc
-	mov r12, rax ; r12 - addr de la zone allouee
+	cmp rax, 0	; if malloc == NULL
+	je end		; return NULL
+	mov r14, rax
 
-	cmp r12, 0 ; si malloc == NULL
-	mov rax, 0 ; return (NULL)
-	je end
+	mov rdi, r14
+	mov rsi, [rsp]
+	mov rdx, r15
+	call _ft_memcpy
 
-	mov rcx, 0
-lp:
-	cmp [r15 + rcx], byte 0
-	je close_str
-	mov r13, [r15 + rcx]
-	mov [r12 + rcx], r13
-	inc rcx
-	jmp lp
+	mov rax, r14
 
 close_str:
-	mov [r12 + rcx], byte 0
-	mov rax, r12
+	mov [rax + r15], byte 0
 
 end:
+	add rsp, 64
+
 	pop rbp
 	ret
