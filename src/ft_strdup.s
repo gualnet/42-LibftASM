@@ -36,6 +36,5 @@ close_str:
 
 end:
 	add rsp, 64
-
 	pop rbp
 	ret

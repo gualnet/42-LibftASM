@@ -1,6 +1,3 @@
-section	.bss
-
-section	.data
 
 section	.text
 	global	_ft_isprint
@@ -15,8 +12,8 @@ _ft_isprint:
 	jl end
 	cmp rdi, 126
 	jg end
-
 	mov r10, 1
+
 end:
 	mov rax, r10
 	pop rbp

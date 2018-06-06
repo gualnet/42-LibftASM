@@ -1,7 +1,5 @@
 STDOUT	equ	1
 
-section	.bss
-
 section	.data
 	buff times 256 db 0
 	buffsize equ $ - buff
@@ -18,7 +16,7 @@ _ft_cat:
 	mov rbp, rsp
 
 	cmp edi, 0
-	jl _exit_err_fd
+	jle _exit_err_fd
 
 	mov r15, buff
 	mov r14, rdi

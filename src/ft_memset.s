@@ -6,7 +6,7 @@ _ft_memset:
 	push rbp
 	mov rbp, rsp
 
-	mov r15, rdi ; save start addr
+	mov r15, rdi
 
 	mov rcx, rdx ; set len
 	mov rax, rsi ; set char

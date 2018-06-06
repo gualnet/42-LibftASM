@@ -1,22 +1,25 @@
 
 %define EOF	-1
-%define OUT_FD	1
 %define ERR_FD	2
 
 section	.bss
 
 section	.data
 string:
-	.line_ret db 10
+	.line_end db 0
 	.null db "(null)", 10, 0
 
 section	.text
-	global	_ft_puts
+	global	_ft_putstr_fd
 	extern	_ft_strlen
 
-_ft_puts:
+_ft_putstr_fd:
 	push rbp
 	mov rbp, rsp
+	sub rsp, 16
+
+	mov r14, rdi
+	mov r15, rsi
 
 	cmp rdi, 0
 	jne get_len
@@ -30,25 +33,25 @@ _ft_puts:
 
 get_len:
 	call _ft_strlen
-	mov r10, rax
-	mov r11, rdi
+	mov [rsp + 8], rax
+	
 lp:
 	mov rax, 0x2000004
-	mov rdi, OUT_FD
-	mov rsi, r11
-	mov rdx, r10
+	mov rdi, r15
+	mov rsi, r14
+	mov rdx, [rsp + 8]
 	syscall
 
 	mov rax, 0x2000004
-	mov rdi, OUT_FD
-	lea rsi, [rel string.line_ret]
+	mov rdi, r15
+	lea rsi, [rel string.line_end]
 	mov rdx, 1
 	syscall
 
-	cmp r10, 0
+	cmp rax, 0
 	jne end
-	add r10, 1
+	add rax, 1
 end:
-	mov rax, r10
+	add rsp, 16
 	pop rbp
 	ret

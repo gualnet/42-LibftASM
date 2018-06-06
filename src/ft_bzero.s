@@ -6,7 +6,6 @@ _ft_bzero:
 	push rbp
 	mov rbp, rsp
 
-	; if
 	cmp rsi, 0
 	jle end
 	

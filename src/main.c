@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/06/06 13:32:39 by galy              #+#    #+#             */
+/*   Updated: 2018/06/06 19:49:45 by galy             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,6 +17,31 @@
 #include <stdio.h>
 
 #include "libfts.h"
+
+int test_ft_putstr_fd()
+{
+	int fd;
+	char *str = "truc";
+	
+	// Test fd = std out
+	str = "\nft_putstr_fd sur stdout\n\n";
+	ft_putstr_fd(str, 1);
+
+	//test fd -> in a filemake fc
+	str = "Direct dans un fichier... WAOUU!";
+	fd = open("putstr_fd_test", O_CREAT | O_RDWR | O_NONBLOCK, S_IRUSR | S_IWUSR);
+	if (fd < 0)
+	{
+		printf("Attention fd = %d\n", fd);
+		return (-1);
+	}
+	printf("fd = %d -> writing in \"putstr_fd_test\"\n", fd);
+	ft_putstr_fd(str, fd);
+	close(fd);
+	return (1);
+
+	
+}
 
 int	test_ft_cat()
 {
@@ -560,67 +597,97 @@ int	test_ft_tolower()
 
 int	main()
 {
+	printf("\n\tFT_putstr_fd:\n");
+	if (test_ft_putstr_fd() == -1)
+		printf("putstr_fd : err\n");
 
-	printf("\n\tFT_cat:\n");
-	if (test_ft_cat() == -1)
-		printf("cat : err\n");
+	// printf("\n\tFT_cat:\n");
+	// if (test_ft_cat() == -1)
+	// 	printf("cat : err\n");
 
-	printf("\n\tFT_strdup:\n");
-	if (test_ft_strdup() == -1)
-		printf("strdup : err\n");
+	// printf("\n\tFT_strdup:\n");
+	// if (test_ft_strdup() == -1)
+	// 	printf("strdup : err\n");
 
-	printf("\n\tFT_memcpy:\n");
-	if (test_ft_memcpy() == -1)
-		printf("memcpy : err\n");
+	// printf("\n\tFT_memcpy:\n");
+	// if (test_ft_memcpy() == -1)
+	// 	printf("memcpy : err\n");
 
-	printf("\n\tFT_memset:\n");
-	if (test_ft_memset() == -1)
-		printf("memset : err\n");
+	// printf("\n\tFT_memset:\n");
+	// if (test_ft_memset() == -1)
+	// 	printf("memset : err\n");
 
-	printf("\n\tFT_puts:\n");
-	if (test_ft_puts() == -1)
-		printf("puts : err\n");
+	// printf("\n\tFT_puts:\n");
+	// if (test_ft_puts() == -1)
+	// 	printf("puts : err\n");
 
-	printf("\n\tFT_strlen:\n");
-	if (test_ft_strlen() == -1)
-		printf("strlen : err\n");
+	// printf("\n\tFT_strlen:\n");
+	// if (test_ft_strlen() == -1)
+	// 	printf("strlen : err\n");
 
-	printf("\n\tFT_isprint:\n");
-	if (test_ft_isprint() == -1)
-		printf("isprint : err\n");
+	// printf("\n\tFT_isprint:\n");
+	// if (test_ft_isprint() == -1)
+	// 	printf("isprint : err\n");
 
-	printf("\n\tFT_isascii:\n");
-	if (test_ft_isascii() == -1)
-		printf("isascii : err\n");
+	// printf("\n\tFT_isascii:\n");
+	// if (test_ft_isascii() == -1)
+	// 	printf("isascii : err\n");
 
-	printf("\n\tFT_isalnum:\n");
-	if (test_ft_isalnum() == -1)
-		printf("isalnum : err\n");
+	// printf("\n\tFT_isalnum:\n");
+	// if (test_ft_isalnum() == -1)
+	// 	printf("isalnum : err\n");
 
-	printf("\n\tFT_isdigit:\n");
-	if (test_ft_isdigit() == -1)
-		printf("isdigit : err\n");
+	// printf("\n\tFT_isdigit:\n");
+	// if (test_ft_isdigit() == -1)
+	// 	printf("isdigit : err\n");
 
-	printf("\n\tFT_isalpha:\n");
-	if (test_ft_isalpha() == -1)
-		printf("isalpha : err\n");
+	// printf("\n\tFT_isalpha:\n");
+	// if (test_ft_isalpha() == -1)
+	// 	printf("isalpha : err\n");
 
-	printf("\n\tFT_strcat:\n");
-	if (test_ft_strcat() == -1)
-		printf("strcat : err\n");
+	// printf("\n\tFT_strcat:\n");
+	// if (test_ft_strcat() == -1)
+	// 	printf("strcat : err\n");
 	
-	printf("\n\tFT_bzero:\n");
-	if (test_ft_bzero() == -1)
-		printf("bzero : err\n");
+	// printf("\n\tFT_bzero:\n");
+	// if (test_ft_bzero() == -1)
+	// 	printf("bzero : err\n");
 
-	printf("\n\tFT_TOLOWER:\n");
-	if (test_ft_tolower() == -1)
-		printf("tolower : err\n");
+	// printf("\n\tFT_TOLOWER:\n");
+	// if (test_ft_tolower() == -1)
+	// 	printf("tolower : err\n");
 
-	printf("\n\tFT_TOUPPER:\n\n");
-	if (test_ft_toupper() == -1)
-		printf("toupper : err\n");
+	// printf("\n\tFT_TOUPPER:\n\n");
+	// if (test_ft_toupper() == -1)
+	// 	printf("toupper : err\n");
 	
 	printf("\nEND\n");
 	return (0);
 }
+
+/*
+** int main(int ac, const char **av)
+** {
+** 	printf("Test00\n");
+** 	ft_cat(0);
+** 	printf("Test00 end\n");
+**	
+** 	printf("Test01 file:[%s]\n", __FILE__);
+** 	ft_cat(open(__FILE__, O_RDONLY));
+** 	printf("Test01 end\n");
+**	
+** 	printf("Test02 file:[%s]\n", av[0]);
+** 	ft_cat(open(av[0], O_RDONLY));
+** 	printf("Test02 end\n");
+**	
+** 	printf("Test03\n");
+** 	ft_cat(-42);
+** 	printf("Test03 end\n");
+**	
+** 	printf("Test04\n");
+** 	(void)ac;
+** 	printf("Test04 end\n");
+**
+** 	return (0);
+** }
+*/
