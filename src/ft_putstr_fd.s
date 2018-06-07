@@ -2,8 +2,6 @@
 %define EOF	-1
 %define ERR_FD	2
 
-section	.bss
-
 section	.data
 string:
 	.line_end db 0

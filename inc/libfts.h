@@ -6,14 +6,18 @@
 /*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:19:15 by galy              #+#    #+#             */
-/*   Updated: 2018/06/06 13:42:50 by galy             ###   ########.fr       */
+/*   Updated: 2018/06/07 15:42:14 by galy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTS_H
 # define LIBFTS_H
 
+#include <unistd.h>
 #include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <stdio.h>
 #include <fcntl.h>
 
 void	ft_bzero(void *s, size_t n);
@@ -36,5 +40,6 @@ void	ft_cat(int fd);
 ** BONUS
 */
 void	ft_putstr_fd(char const *s, int fd);
+void	*ft_memchr(const void *s, int c, size_t n);
 
 #endif
