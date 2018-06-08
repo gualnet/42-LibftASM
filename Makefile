@@ -6,13 +6,13 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/06/07 12:00:46 by galy             ###   ########.fr        #
+#    Updated: 2018/06/08 12:51:50 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libfts.a
 CC		=	clang
-#CFLAGS	=	-Wall -Werror -Wextra
+# CFLAGS	=	-Wall -Werror -Wextra
 # CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
 # CFLAGS	=	-fsanitize=address
 NA		=	nasm
@@ -74,8 +74,7 @@ $(NAME) : $(OBJP)
 
 clean		:
 	$(RM) -r $(OBJDIR)
-
-mini_clean	:
+	$(RM) putstr_fd_test
 
 fclean		: clean
 	$(RM) $(NAME)

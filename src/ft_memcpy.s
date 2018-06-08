@@ -5,12 +5,13 @@ section	.text
 _ft_memcpy:
 	push rbp
 	mov rbp, rsp
+	push rdi
 	
 	mov rcx, rdx
 	cld
 	rep movsb
 
 end:
-	mov rax, rdi
+	pop rax
 	pop rbp
 	ret

@@ -5,6 +5,7 @@ section	.data
 	buffsize equ $ - buff
 msg:
 	.err_fd db "cat: No such file or directory", 10, 0
+	.errSize equ $ - msg.err_fd
 
 section	.text
 	global	_ft_cat
@@ -14,14 +15,16 @@ section	.text
 _ft_cat:
 	push rbp
 	mov rbp, rsp
-
-	cmp edi, 0
+	
+	mov rax, 0
+	cmp edi, eax
 	jle _exit_err_fd
 
 	mov r15, buff
 	mov r14, rdi
+
 _read_lp:
-	mov rdi, r15
+	mov rdi, buff
 	mov rsi, buffsize
 	call _ft_bzero
 
@@ -30,6 +33,7 @@ _read_lp:
 	mov rsi, r15
 	mov rdx, buffsize
 	syscall
+
 	push rax
 	mov r13, rax
 
@@ -47,9 +51,12 @@ _read_lp:
 	jmp _end
 
 _exit_err_fd:
-	lea rdi, [rel msg.err_fd]
-	call _ft_puts
-	jmp _end
+
+	mov rax, 0x2000004 ; write
+	mov rdi, STDOUT
+	lea rsi, [rel msg.err_fd]
+	mov rdx, msg.errSize
+	syscall
 
 _end:
 	pop rbp

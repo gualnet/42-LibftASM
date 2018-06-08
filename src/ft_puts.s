@@ -3,8 +3,6 @@
 %define OUT_FD	1
 %define ERR_FD	2
 
-section	.bss
-
 section	.data
 string:
 	.line_ret db 10

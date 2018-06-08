@@ -1,11 +1,6 @@
 
-section	.data
-print:
-	.format db "-->%c", 10
-
 section	.text
 	global	_ft_strcat
-	extern _printf
 
 _ft_strcat:
 	push rbp

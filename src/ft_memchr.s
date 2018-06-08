@@ -12,6 +12,7 @@ _ft_memchr:
 	mov [rsp + 8], rdi
 	mov [rsp + 16], rsi
 	mov [rsp + 24], rdx
+	mov rax, 0
 
 _chk_00:
 	cmp rdx, 0
@@ -50,4 +51,7 @@ _check:
 	call _ft_strlen
 	cmp rax, 0
 	jne _chk_01
-	je _str_lp
+	mov r15, [rsp + 16] 
+	cmp r15, 0
+	je _give_res
+	jne _zero_end
