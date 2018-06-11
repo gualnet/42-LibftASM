@@ -11,7 +11,7 @@ _ft_isalpha:
 	cmp rdi, 65
 	jl end
 	cmp rdi, 90
-	jl return_1
+	jle return_1
 ; Min
 	cmp rdi, 97
 	jl end
