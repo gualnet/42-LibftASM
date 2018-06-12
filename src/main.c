@@ -6,7 +6,7 @@
 /*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 12:52:20 by galy              #+#    #+#             */
-/*   Updated: 2018/06/08 16:30:59 by galy             ###   ########.fr       */
+/*   Updated: 2018/06/11 19:18:00 by galy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,47 @@ int test_ft_memchr()
 	void	*ret2;
 
 
-	str = "Non! Rien de rien, Non! Je ne regrette rien, Ni le bien qu'on m'a fait, Ni le mal tout ca m'est bien egal! +";
+	str = "Non! Rien de rien, Non! Je ne regrette rien, +";
 	size = ft_strlen(str);
 	
-	ret1 = memchr(str, 'd', size);
-	ret2 = ft_memchr(str, 'd', size);
-	printf("str[%p] ->[%p][%p]\n", str, ret1, ret2);
+	ret1 = memchr(str, 'N', size);
+	ret2 = ft_memchr(str, 'N', size);
+	printf("str[%p] ->[%p][%p][%d]\n", str, ret1, ret2, ret2);
+	// printf("[%s]\n", ret2);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 1: NOK\033[0m\n");
-		return (-1);
+		// return (-1);
+	}
+	printf("\033[32mTEST 1: OK\033[0m\n");
+	
+	ret1 = memchr(str, 'd', size);
+	ret2 = ft_memchr(str, 'd', size);
+	printf("str[%p] ->[%p][%p][%d]\n", str, ret1, ret2, ret2);
+	if (ret1 != ret2)
+	{
+		printf("\033[31mTEST 1: NOK\033[0m\n");
+		// return (-1);
 	}
 	printf("\033[32mTEST 1: OK\033[0m\n");
 
 	ret1 = memchr(str, 0, size);
 	ret2 = ft_memchr(str, 0, size);
-	printf("str[%p] ->[%p][%p]\n", str, ret1, ret2);
+	printf("str[%p] ->[%p][%p][%d]\n", str, ret1, ret2, ret2);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 2: NOK\033[0m\n");
-		return (-1);
+		// return (-1);
 	}
 	printf("\033[32mTEST 2: OK\033[0m\n");
 
 	ret1 = memchr(str, '+', size);
 	ret2 = ft_memchr(str, '+', size);
-	printf("str[%p] ->[%p][%p]\n", str, ret1, ret2);
+	printf("str[%p] ->[%p][%p][%d]\n", str, ret1, ret2, ret2);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 3: NOK\033[0m\n");
-		return (-1);
+		// return (-1);
 	}
 	printf("\033[32mTEST 3: OK\033[0m\n");
 
@@ -60,31 +71,31 @@ int test_ft_memchr()
 	
 	ret1 = memchr(str, 'd', size);
 	ret2 = ft_memchr(str, 'd', size);
-	printf("->[%p][%p]\n", ret1, ret2);
+	printf("->[%p][%p][%d]\n", ret1, ret2, ret2);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 4: NOK\033[0m\n");
-		return (-1);
+		// return (-1);
 	}
 	printf("\033[32mTEST 4: OK\033[0m\n");
 
 	ret1 = memchr(str, 0, size);
 	ret2 = ft_memchr(str, 0, size);
-	printf("str[%p] ->[%p][%p]\n", str, ret1, ret2);
+	printf("str[%p] ->[%p][%p][%d]\n", str, ret1, ret2, ret2);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 5: NOK\033[0m\n");
-		return (-1);
+		// return (-1);
 	}
 	printf("\033[32mTEST 5: OK\033[0m\n");
 	
 	ret1 = memchr(str, '0', 0);
 	ret2 = ft_memchr(str, '0', 0);
-	printf("str[%p] ->[%p][%p]\n", str, ret1, ret2);
+	printf("str[%p] ->[%p][%p][%d]\n", str, ret1, ret2, ret2);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 6: NOK\033[0m\n");
-		return (-1);
+		// return (-1);
 	}
 	printf("\033[32mTEST 6: OK\033[0m\n");
 
@@ -155,6 +166,9 @@ int	test_ft_strdup()
 
 	str1 = strdup(base);
 	str2 = ft_strdup(base);
+	printf("BASE		[%p][%s]\n", base, base);
+	printf("strdup		[%p][%s]\n", str1, str1);
+	printf("ft_strdup	[%p][%s]\n", str2, str2);
 	if (strcmp(str1, str2) != 0)
 	{
 		printf("BASE		[%p][%s]\n", base, base);
@@ -172,6 +186,9 @@ int	test_ft_strdup()
 	str2 = NULL;
 	str1 = strdup(base);
 	str2 = ft_strdup(base);
+	printf("BASE		[%p][%s]\n", base, base);
+	printf("strdup		[%p][%s]\n", str1, str1);
+	printf("ft_strdup	[%p][%s]\n", str2, str2);
 	if (strcmp(str1, str2) != 0)
 	{
 		printf("strdup     [%p][%s]\n", str1, str1);
@@ -186,6 +203,9 @@ int	test_ft_strdup()
 	base = "";
 	str1 = strdup(base);
 	str2 = ft_strdup(base);
+	printf("BASE		[%p][%s]\n", base, base);
+	printf("strdup		[%p][%s]\n", str1, str1);
+	printf("ft_strdup	[%p][%s]\n", str2, str2);
 	if (strcmp(str1, str2) != 0)
 	{
 		printf("strdup     [%p][%s]\n", str1, str1);
@@ -267,9 +287,9 @@ int	test_ft_memset()
 	bzero(str2, size);
 
 	ret1 = (char*)memset(str1, '$', 12);
-	printf("memset [%p - %p][%s]\n", str1, ret1, str1);
+	printf("memset		[%p - %p][%s]\n", str1, ret1, str1);
 	ret2 = (char*)ft_memset(str2, '$', 12);
-	printf("memset [%p - %p][%s]\n", str2, ret2, str2);
+	printf("ft_memset	[%p - %p][%s]\n", str2, ret2, str2);
 	if (str2 != ret2 || strcmp(str1, str2) != 0)
 	{
 		printf("\033[31mTEST 1: NOK\033[0m\n");
@@ -280,9 +300,9 @@ int	test_ft_memset()
 	bzero(str1, size);
 	bzero(str2, size);
 	ret1 = (char*)memset(str1, '@', 0);
-	printf("memset [%p - %p][%s]\n", str1, ret1, str1);
+	printf("memset		[%p - %p][%s]\n", str1, ret1, str1);
 	ret2 = (char*)ft_memset(str2, '@', 0);
-	printf("memset [%p - %p][%s]\n", str2, ret2, str2);
+	printf("ft_memset	[%p - %p][%s]\n", str2, ret2, str2);
 	if (str2 != ret2 || strcmp(str1, str2) != 0)
 	{
 		printf("\033[31mTEST 2: NOK\033[0m\n");
@@ -308,7 +328,7 @@ int	test_ft_puts()
 		printf("\033[31mTEST 1: NOK\033[0m\n");
 		return (-1);
 	}
-	printf("\033[32mTEST 1: OK\033[0m\n");
+	printf("\033[32mTEST 1: .\033[0m\n");
 
 	str = "";
 	ret1 = puts(str);
@@ -318,7 +338,7 @@ int	test_ft_puts()
 		printf("\033[31mTEST 2: NOK\033[0m\n");
 		return (-1);
 	}
-	printf("\033[32mTEST 2: OK\033[0m\n");
+	printf("\033[32mTEST 2: ...\033[0m\n");
 
 	str = NULL;
 	ret1 = puts(str);
@@ -328,7 +348,7 @@ int	test_ft_puts()
 		printf("\033[31mTEST 3: NOK\033[0m\n");
 		return (-1);
 	}
-	printf("\033[32mTEST 3: OK\033[0m\n");
+	printf("\033[32mTEST 3: ...\033[0m\n");
 
 	return (1);
 }
@@ -337,11 +357,12 @@ int	test_ft_strlen()
 {
 	int		ret1 = 0;
 	int		ret2 = 0;
-	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+	char	*str = "8c1eIUGF6b57cad4F 4a6caZ18cc08*UI6dfa;'c72d";
+
 	ret1 = ft_strlen(str);
 	ret2 = strlen(str);
-	printf("ret ft [%d]\n", ret1);
-	printf("ret    [%d]\n", ret2);
+	printf("strlen		[%d]\n", ret2);
+	printf("ft_strlen	[%d]\n", ret1);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 1: NOK\033[0m\n");
@@ -354,8 +375,8 @@ int	test_ft_strlen()
 	str = "";
 	ret1 = ft_strlen(str);
 	ret2 = strlen(str);
-	printf("ret ft [%d]\n", ret1);
-	printf("ret    [%d]\n", ret2);
+	printf("strlen		[%d]\n", ret2);
+	printf("ft_strlen	[%d]\n", ret1);
 	if (ret1 != ret2)
 	{
 		printf("\033[31mTEST 2: NOK\033[0m\n");
@@ -374,7 +395,7 @@ int	test_ft_isprint()
 	int		ret1 = 0;
 	int		ret2 = 0;
 	int		i = 0;
-	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+	char	*str = "8c1eIUGF6b57cad4F 4a6caZ18cc08*UI6dfa;'c72d";
 
 	while (str[i] != '\0')
 	{
@@ -396,7 +417,7 @@ int	test_ft_isascii()
 	int		ret1 = 0;
 	int		ret2 = 0;
 	int		i = 0;
-	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+	char	*str = "8c1eIUGF6b57cad4F 4a6caZ18cc08*UI6dfa;'c72d";
 
 	while (str[i] != '\0')
 	{
@@ -418,7 +439,7 @@ int	test_ft_isalnum()
 	int		ret1 = 0;
 	int		ret2 = 0;
 	int		i = 0;
-	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+	char	*str = "8c1eIUGF6b57cad4F 4a6caZ18cc08*UI6dfa;'c72d";
 
 	while (str[i] != '\0')
 	{
@@ -440,7 +461,7 @@ int	test_ft_isdigit()
 	int		ret1 = 0;
 	int		ret2 = 0;
 	int		i = 0;
-	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+	char	*str = "8c1eIUGF6b57cad4F 4a6caZ18cc08*UI6dfa;'c72d";
 
 	while (str[i] != '\0')
 	{
@@ -462,7 +483,7 @@ int	test_ft_isalpha()
 	int		ret1 = 0;
 	int		ret2 = 0;
 	int		i = 0;
-	char	*str = "8c1eIUGF6b57cad4F 4a6ca18cc08*UI6dfa;'c72d";
+	char	*str = "8c1eIUGF6b57cad4F 4a6caZ18cc08*UI6dfa;'c72d";
 
 	while (str[i] != '\0')
 	{
@@ -500,17 +521,50 @@ int	test_ft_strcat()
 	str2[3] = '-';
 	str2[4] = '>';
 
+	printf("[%s][%s]\n", str2, base);
 	res1 = ft_strcat(str1, base);
 	res2 = strcat(str2, base);
+	printf("strcat		[%s]\n", str2);
+	printf("ft_strcat	[%s]\n", str1);
 	if (strcmp(res1, res2) != 0)
 	{
-		printf("str1[%s]\n", str1);
-		printf("str2[%s]\n", str2);
 		printf("ft_strcat: [%s]\n", res1);
 		printf("strcat:    [%s]\n", res2);
+		printf("\033[33mTEST 1: NOK\033[0m\n");
 	}
 	else
-		printf("\033[32mTEST 1: OK\033[0m\n");
+		printf("\033[32mTEST 1: OK\033[0m\n\n");
+
+	printf("[%s][%s]\n", str2, "");
+	res1 = ft_strcat(str1, "");
+	res2 = strcat(str2, "");
+	printf("strcat		[%s]\n", str2);
+	printf("ft_strcat	[%s]\n", str1);
+	if (strcmp(res1, res2) != 0)
+	{
+		printf("ft_strcat: [%s]\n", res1);
+		printf("strcat:    [%s]\n", res2);
+		printf("\033[33mTEST 2: NOK\033[0m\n");
+	}
+	else
+		printf("\033[32mTEST 2: OK\033[0m\n\n");
+
+	bzero(str1, 30);
+	bzero(str2, 30);
+	printf("[%s][%s]\n", str2, base);
+	res1 = ft_strcat(str1, base);
+	res2 = strcat(str2, base);
+	printf("strcat		[%s]\n", str2);
+	printf("ft_strcat	[%s]\n", str1);
+	if (strcmp(res1, res2) != 0)
+	{
+		printf("ft_strcat: [%s]\n", res1);
+		printf("strcat:    [%s]\n", res2);
+		printf("\033[33mTEST 3: NOK\033[0m\n");
+	}
+	else
+		printf("\033[32mTEST 3: OK\033[0m\n\n");
+
 	return (1);
 }
 
@@ -519,6 +573,7 @@ int test_ft_bzero()
 	int		i = 0;
 	int		len;
 	char	str[5];
+
 	str[0] = 'A';
 	str[1] = 'z';
 	str[2] = '(';
@@ -616,6 +671,7 @@ int	test_ft_tolower()
 	if ((str2 = strdup(str)) == NULL)
 		exit(-1);
 	// -------
+	printf("		[%s]\n", str);
 	str2[0] = ft_tolower(str2[0]);
 	str2[1] = ft_tolower(str2[1]);
 	str2[2] = ft_tolower(str2[2]);
@@ -624,17 +680,19 @@ int	test_ft_tolower()
 	str[1] = tolower(str2[1]);
 	str[2] = tolower(str2[2]);
 	str[3] = tolower(str2[3]);
+	printf("tolower		[%s]\n", str);
+	printf("ft_tolower	[%s]\n", str2);
 	// -------
 	if (strcmp(str, str2) != 0)
 	{
-		printf("REAL [%s]\n", str);
-		printf("ft_  [%s]\n", str2);
+		printf("\033[33mTEST 1: NOK\033[0m\n");
 		return(-1);
 	}
 	else
 		printf("\033[32mTEST 1: OK\033[0m\n");
 	free(str2);
-	// -------
+	
+	
 	if ((str3 = strdup(str3)) == NULL)
 		exit(-1);
 	if ((str2 = strdup(str3)) == NULL)
@@ -645,11 +703,12 @@ int	test_ft_tolower()
 		str2[i] = ft_tolower(str3[i]);
 		i++;
 	}
+	printf("STR		[_()*OUGI897fiyvhb)[t97rf8yit97r8fYIV6t97rfiy98t7iu]\n");
+	printf("tolower		[%s]\n", str3);
+	printf("ft_tolower	[%s]\n", str3);
 	if (strcmp(str2, str3) != 0)
 	{
-		printf("STR  [_()*OUGI897fiyvhb)[t97rf8yit97r8fYIV6t97rfiy98t7iu]\n");
-		printf("REAL [%s]\n", str3);
-		printf("ft_  [%s]\n", str2);
+		printf("\033[33mTEST 2: NOK\033[0m\n");
 		return(-1);
 	}
 	else
@@ -657,100 +716,100 @@ int	test_ft_tolower()
 	return (1);
 }
 
-// int	main()
-// {
-// 	printf("\n\tFT_memchr:\n");
-// 	if (test_ft_memchr() == -1)
-// 		printf("memchr : err\n");
-
-// 		printf("\n\tFT_putstr_fd:\n");
-// 	if (test_ft_putstr_fd() == -1)
-// 		printf("putstr_fd : err\n");
-
-// 	printf("\n\tFT_cat:\n");
-// 	if (test_ft_cat() == -1)
-// 		printf("cat : err\n");
-
-// 	printf("\n\tFT_strdup:\n");
-// 	if (test_ft_strdup() == -1)
-// 		printf("strdup : err\n");
-
-// 	printf("\n\tFT_memcpy:\n");
-// 	if (test_ft_memcpy() == -1)
-// 		printf("memcpy : err\n");
-
-// 	printf("\n\tFT_memset:\n");
-// 	if (test_ft_memset() == -1)
-// 		printf("memset : err\n");
-
-// 	printf("\n\tFT_puts:\n");
-// 	if (test_ft_puts() == -1)
-// 		printf("puts : err\n");
-
-// 	printf("\n\tFT_strlen:\n");
-// 	if (test_ft_strlen() == -1)
-// 		printf("strlen : err\n");
-
-// 	printf("\n\tFT_isprint:\n");
-// 	if (test_ft_isprint() == -1)
-// 		printf("isprint : err\n");
-
-// 	printf("\n\tFT_isascii:\n");
-// 	if (test_ft_isascii() == -1)
-// 		printf("isascii : err\n");
-
-// 	printf("\n\tFT_isalnum:\n");
-// 	if (test_ft_isalnum() == -1)
-// 		printf("isalnum : err\n");
-
-// 	printf("\n\tFT_isdigit:\n");
-// 	if (test_ft_isdigit() == -1)
-// 		printf("isdigit : err\n");
-
-// 	printf("\n\tFT_isalpha:\n");
-// 	if (test_ft_isalpha() == -1)
-// 		printf("isalpha : err\n");
-
-// 	printf("\n\tFT_strcat:\n");
-// 	if (test_ft_strcat() == -1)
-// 		printf("strcat : err\n");
-	
-// 	printf("\n\tFT_bzero:\n");
-// 	if (test_ft_bzero() == -1)
-// 		printf("bzero : err\n");
-
-// 	printf("\n\tFT_TOLOWER:\n");
-// 	if (test_ft_tolower() == -1)
-// 		printf("tolower : err\n");
-
-// 	printf("\n\tFT_TOUPPER:\n\n");
-// 	if (test_ft_toupper() == -1)
-// 		printf("toupper : err\n");
-	
-// 	printf("\nEND\n");
-// 	return (0);
-// }
-
-int main(int ac, const char **av)
+int	main()
 {
-	// printf("Test00\n");
-	// ft_cat(0);
-	// printf("Test00 end\n\n");
-	
-	// printf("Test01 file:[%s]\n", __FILE__);
-	// ft_cat(open(__FILE__, O_RDONLY));
-	// printf("Test01 end\n\n");
-	
-	// printf("Test02 file:[%s]\n", av[0]);
-	ft_cat(open(av[0], O_RDONLY));
-	// printf("Test02 end\n");
-	
-	// printf("Test03\n");
-	// ft_cat(-42);
-	// printf("Test03 end\n");
-	
-	(void)ac;
-	(void)av;
+	printf("\n\tFT_memchr:\n");
+	if (test_ft_memchr() == -1)
+		printf("memchr : err\n");
 
+	// 	printf("\n\tFT_putstr_fd:\n");
+	// if (test_ft_putstr_fd() == -1)
+	// 	printf("putstr_fd : err\n");
+
+	// printf("\n\tFT_cat:\n");
+	// if (test_ft_cat() == -1)
+	// 	printf("cat : err\n");
+
+	// printf("\n\tFT_strdup:\n");
+	// if (test_ft_strdup() == -1)
+	// 	printf("strdup : err\n");
+
+	// printf("\n\tFT_memcpy:\n");
+	// if (test_ft_memcpy() == -1)
+	// 	printf("memcpy : err\n");
+
+	// printf("\n\tFT_memset:\n");
+	// if (test_ft_memset() == -1)
+	// 	printf("memset : err\n");
+
+	// printf("\n\tFT_puts:\n");
+	// if (test_ft_puts() == -1)
+	// 	printf("puts : err\n");
+
+	// printf("\n\tFT_strlen:\n");
+	// if (test_ft_strlen() == -1)
+	// 	printf("strlen : err\n");
+
+	// printf("\n\tFT_isprint:\n");
+	// if (test_ft_isprint() == -1)
+	// 	printf("isprint : err\n");
+
+	// printf("\n\tFT_isascii:\n");
+	// if (test_ft_isascii() == -1)
+	// 	printf("isascii : err\n");
+
+	// printf("\n\tFT_isalnum:\n");
+	// if (test_ft_isalnum() == -1)
+	// 	printf("isalnum : err\n");
+
+	// printf("\n\tFT_isdigit:\n");
+	// if (test_ft_isdigit() == -1)
+	// 	printf("isdigit : err\n");
+
+	// printf("\n\tFT_isalpha:\n");
+	// if (test_ft_isalpha() == -1)
+	// 	printf("isalpha : err\n");
+
+	// printf("\n\tFT_strcat:\n");
+	// if (test_ft_strcat() == -1)
+	// 	printf("strcat : err\n");
+	
+	// printf("\n\tFT_bzero:\n");
+	// if (test_ft_bzero() == -1)
+	// 	printf("bzero : err\n");
+
+	// printf("\n\tFT_TOLOWER:\n");
+	// if (test_ft_tolower() == -1)
+	// 	printf("tolower : err\n");
+
+	// printf("\n\tFT_TOUPPER:\n\n");
+	// if (test_ft_toupper() == -1)
+	// 	printf("toupper : err\n");
+	
+	printf("\nEND\n");
 	return (0);
 }
+
+// int main(int ac, const char **av)
+// {
+// 	// printf("Test00\n");
+// 	// ft_cat(0);
+// 	// printf("Test00 end\n\n");
+	
+// 	// printf("Test01 file:[%s]\n", __FILE__);
+// 	// ft_cat(open(__FILE__, O_RDONLY));
+// 	// printf("Test01 end\n\n");
+	
+// 	// printf("Test02 file:[%s]\n", av[0]);
+// 	ft_cat(open(av[0], O_RDONLY));
+// 	// printf("Test02 end\n");
+	
+// 	// printf("Test03\n");
+// 	// ft_cat(-42);
+// 	// printf("Test03 end\n");
+	
+// 	(void)ac;
+// 	(void)av;
+
+// 	return (0);
+// }

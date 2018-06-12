@@ -3,7 +3,6 @@ section	.text
 	global	_ft_memchr
 	extern	_ft_strlen
 
-
 _ft_memchr:
 	push rbp
 	mov rbp, rsp
@@ -12,33 +11,30 @@ _ft_memchr:
 	mov [rsp + 8], rdi
 	mov [rsp + 16], rsi
 	mov [rsp + 24], rdx
-	mov rax, 15
+	mov rax, 0
 
-
-;_check_c:
-	cmp rsi, 0	;test2
-	je _one_more
-_check_n:
-	cmp rdx, 0	;test5
+_chk_00:
+	cmp rdx, 0
 	je _zero_end
-;_check_strlen:
-	call _ft_strlen	;test4
-	cmp rax, 0
-	je _zero_end
+	jmp _check
 
-_lp:
+_chk_01:
+	cmp rsi, 0
+	je _zero_end
+	
+_str_lp:
 	mov rdi, [rsp + 8]
 	mov rax, [rsp + 16]
 	mov rcx, [rsp + 24]
 	cld
 	repne scasb
 
-
+	cmp rcx, 0
+	je _zero_end
 	mov rax, [rsp + 24]
 	sub rax, rcx
 	sub rax, 1
 	jmp _give_res
-
 
 _end:
 	add rsp, 40
@@ -50,13 +46,15 @@ _zero_end:
 	jmp _end
 
  _give_res:
-	; mov rax, 7
 	add rax, [rsp + 8]
 	jmp _end
 
-_one_more:
-	; mov rax, 8
+_check:
 	call _ft_strlen
+	mov [rsp + 32], rax
 	cmp rax, 0
+	jne _chk_01
+	mov r15, [rsp + 16] 
+	cmp r15, 0
+	je _give_res
 	jne _zero_end
-	jmp _check_n

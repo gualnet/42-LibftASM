@@ -5,7 +5,8 @@
 
 section	.data
 string:
-	.line_ret db 10
+	.line_ret db 10, 0
+	lrSize equ $ - .line_ret
 	.null db "(null)", 10, 0
 
 section	.text
@@ -16,37 +17,44 @@ _ft_puts:
 	push rbp
 	mov rbp, rsp
 
+	sub rsp, 32
+	mov [rsp + 16], rdi
+
 	cmp rdi, 0
-	jne get_len
+	jne _get_len
+
 	mov rax, 0x2000004
 	mov rdi, ERR_FD
 	lea rsi, [rel string.null]
 	mov rdx, 7
 	syscall
-	mov r10, 1
-	jmp end
+	mov word [rsp + 8], EOF
+	jmp _end
 
-get_len:
+_get_len:
 	call _ft_strlen
-	mov r10, rax
-	mov r11, rdi
-lp:
+	mov [rsp + 8], rax
+
+_lp:
 	mov rax, 0x2000004
 	mov rdi, OUT_FD
-	mov rsi, r11
-	mov rdx, r10
+	mov rsi, [rsp + 16]
+	mov rdx, [rsp + 8]
 	syscall
 
 	mov rax, 0x2000004
 	mov rdi, OUT_FD
 	lea rsi, [rel string.line_ret]
-	mov rdx, 1
+	mov rdx, lrSize
 	syscall
 
-	cmp r10, 0
-	jne end
-	add r10, 1
-end:
-	mov rax, r10
+	cmp word [rsp + 8], 0
+	jne _end
+	add word [rsp + 8], 1
+
+
+_end:
+	mov rax, [rsp + 8]
+	add rsp, 32
 	pop rbp
 	ret

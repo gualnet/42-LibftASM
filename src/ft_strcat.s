@@ -1,30 +1,39 @@
 
+section .data
+	fmt db "test: [%d]", 10, 0
+
 section	.text
 	global	_ft_strcat
+	extern	_ft_strlen
+	extern	_ft_memcpy
+
+	extern	_printf
 
 _ft_strcat:
 	push rbp
 	mov rbp, rsp
-	mov r10, 0 ; i = 0
-	mov r11, 0 ; j = 0
 
-loop_00:
-	cmp [rdi + r10], byte 0x0
-	je loop_01
-	inc r10
-	jmp loop_00
+	sub rsp, 32
 
-loop_01:
-	cmp [rsi + r11], byte 0
-	je _end
-	mov r12, [rsi + r11]
-	mov [rdi + r10], r12
-	inc r10
-	inc r11
-	jmp loop_01
+	mov [rsp + 8], rdi
+	mov [rsp + 16], rsi
+	call _ft_strlen
+	mov rcx, rax
 
+	mov r15, [rsp + 8]
+	mov r14, [rsp + 16]
+	mov rdx, 0
+	mov r13b, [r14 + rdx]
+_lp:
+	mov [r15 + rcx], r13b
+	inc rcx
+	inc rdx
+	mov r13b, [r14 + rdx]
+	cmp r13b, 0
+	jne _lp
+
+	mov rax, [rsp + 8]
 _end:
-	mov [rdi + r10], byte 0x0
-	mov rax, rdi
+	add rsp, 32
 	pop rbp
 	ret
