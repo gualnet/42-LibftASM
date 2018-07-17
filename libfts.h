@@ -6,7 +6,7 @@
 /*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/14 14:19:15 by galy              #+#    #+#             */
-/*   Updated: 2018/06/07 15:42:14 by galy             ###   ########.fr       */
+/*   Updated: 2018/07/17 15:43:54 by galy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_cat(int fd);
 /*
 ** BONUS
 */
-void	ft_putstr_fd(char const *s, int fd);
-void	*ft_memchr(const void *s, int c, size_t n);
+// void	ft_putstr_fd(char const *s, int fd);
+// void	*ft_memchr(const void *s, int c, size_t n);
 
 #endif
