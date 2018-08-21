@@ -6,9 +6,7 @@ section	.text
 	global	_ft_tolower
 
 _ft_tolower:
-	;enter
 	push rbp
-	;je sauvegarde l'adresse de la stack ?
 	mov rbp, rsp
 ;if:
 	cmp rdi, 0x41
@@ -25,6 +23,5 @@ endif_out:
 	mov rax, rdi
 
 end:
-	;leave
 	pop rbp
 	ret

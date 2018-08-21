@@ -6,7 +6,7 @@
 /*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/02/01 13:30:51 by jealonso          #+#    #+#             */
-/*   Updated: 2018/06/11 19:14:56 by galy             ###   ########.fr       */
+/*   Updated: 2018/08/21 21:17:12 by galy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -414,20 +414,20 @@ void	test_memchr()
 
 int		main()
 {
-	// test_print();
-	// test_strcat();
-	// test_alnum();
-	// test_alpha();
-	// test_ascii();
-	// test_digit();
-	// test_strlen();
-	// test_puts();
-	// test_tolower();
-	// test_toupper();
-	// test_bzero();
-	// test_memset();
-	// test_memcpy();
-	// test_strdup();
+	test_print();
+	test_strcat();
+	test_alnum();
+	test_alpha();
+	test_ascii();
+	test_digit();
+	test_strlen();
+	test_puts();
+	test_tolower();
+	test_toupper();
+	test_bzero();
+	test_memset();
+	test_memcpy();
+	test_strdup();
 	test_memchr();
 
 

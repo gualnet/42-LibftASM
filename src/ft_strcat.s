@@ -14,9 +14,9 @@ _ft_strcat:
 	mov rbp, rsp
 
 	sub rsp, 32
-
 	mov [rsp + 8], rdi
 	mov [rsp + 16], rsi
+
 	call _ft_strlen
 	mov rcx, rax
 
