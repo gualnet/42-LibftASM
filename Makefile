@@ -6,13 +6,13 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/06/08 12:51:50 by galy             ###   ########.fr        #
+#    Updated: 2018/08/21 19:31:43 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libfts.a
 CC		=	clang
-# CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
 # CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
 # CFLAGS	=	-fsanitize=address
 NA		=	nasm
@@ -64,13 +64,18 @@ OBJP		= $(addprefix $(OBJDIR)/, $(SRC:.s=.o))
 
 ####RULEZ####
 
-all			: OBJD $(NAME)
-	@nasm -v
+all			: OBJD reset_cursor $(NAME)
+#	@nasm -v
 
 $(NAME) : $(OBJP)
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
+	@$(CC) $(CFLAGS) -I$(INCDIR) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
+	@printf "$(CUR_RST)$(CUR_SVE)$(CYELLOW)BUILD LIBFTASM Objects: main.s$(CRESET)$(CUR_CLR)"
+	@printf "$(CUR_RST)$(CUR_SVE)$(CGREEN)BUILD LIBFTASM Objects: SUCCESS$(CRESET)$(CUR_CLR)"
+	@printf "\n"
+
 	@ar -rc $(NAME) $^
-	$(CC) $(CFLAGS) $(OBJDIR)/main.o $^ -o main_test -L. -lfts
+	@$(CC) $(CFLAGS) $(OBJDIR)/main.o $^ -o main_test -L. -lfts
+	@printf "$(CUR_RST)$(CUR_SVE)$(CGREEN)BUILD LIBFTASM main_test: SUCCESS$(CRESET)$(CUR_CLR)"
 
 clean		:
 	$(RM) -r $(OBJDIR)
@@ -86,7 +91,9 @@ re			: fclean print_inter_line all
 ####MORE_RULEZ####
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.s
-	$(NA) $(NAFLAG) $^ -o $@
+	@$(NA) $(NAFLAG) $^ -o $@
+	@printf "$(CUR_RST)$(CUR_SVE)$(CYELLOW)BUILD LIBFTASM Objects: $^$(CRESET)$(CUR_CLR)"
+	@sleep 0.1
 
 test		:
 	$(CC) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
@@ -97,3 +104,5 @@ print_inter_line	:
 OBJD		:
 	@mkdir -p $(OBJDIR)
 
+reset_cursor :
+	@printf "$(CUR_SVE)"
