@@ -1,5 +1,5 @@
 
-%define EOF	-1
+%define EOF		-1
 %define OUT_FD	1
 %define ERR_FD	2
 

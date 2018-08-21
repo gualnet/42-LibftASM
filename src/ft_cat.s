@@ -1,4 +1,5 @@
-STDOUT	equ	1
+
+%define STDOUT	1
 
 section	.data
 	buff times 256 db 0
@@ -9,16 +10,15 @@ msg:
 
 section	.text
 	global	_ft_cat
-	extern	_ft_puts
 	extern	_ft_bzero
 
 _ft_cat:
 	push rbp
 	mov rbp, rsp
 	
-	mov rax, 0
+	xor rax, rax
 	cmp edi, eax
-	jle _exit_err_fd
+	je _exit_err_fd
 
 	mov r15, buff
 	mov r14, rdi

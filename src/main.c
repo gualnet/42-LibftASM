@@ -6,7 +6,11 @@
 /*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 12:52:20 by galy              #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/06/11 19:18:00 by galy             ###   ########.fr       */
+=======
+/*   Updated: 2018/08/15 07:49:45 by galy             ###   ########.fr       */
+>>>>>>> 5be5be142621f3a32a7a0525092216d5f7c59022
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -722,6 +726,7 @@ int	main()
 	if (test_ft_memchr() == -1)
 		printf("memchr : err\n");
 
+<<<<<<< HEAD
 	// 	printf("\n\tFT_putstr_fd:\n");
 	// if (test_ft_putstr_fd() == -1)
 	// 	printf("putstr_fd : err\n");
@@ -785,6 +790,71 @@ int	main()
 	// printf("\n\tFT_TOUPPER:\n\n");
 	// if (test_ft_toupper() == -1)
 	// 	printf("toupper : err\n");
+=======
+		printf("\n\tFT_putstr_fd:\n");
+	if (test_ft_putstr_fd() == -1)
+		printf("putstr_fd : err\n");
+
+	printf("\n\tFT_cat:\n");
+	if (test_ft_cat() == -1)
+		printf("cat : err\n");
+
+	printf("\n\tFT_strdup:\n");
+	if (test_ft_strdup() == -1)
+		printf("strdup : err\n");
+
+	printf("\n\tFT_memcpy:\n");
+	if (test_ft_memcpy() == -1)
+		printf("memcpy : err\n");
+
+	printf("\n\tFT_memset:\n");
+	if (test_ft_memset() == -1)
+		printf("memset : err\n");
+
+	printf("\n\tFT_puts:\n");
+	if (test_ft_puts() == -1)
+		printf("puts : err\n");
+
+	printf("\n\tFT_strlen:\n");
+	if (test_ft_strlen() == -1)
+		printf("strlen : err\n");
+
+	printf("\n\tFT_isprint:\n");
+	if (test_ft_isprint() == -1)
+		printf("isprint : err\n");
+
+	printf("\n\tFT_isascii:\n");
+	if (test_ft_isascii() == -1)
+		printf("isascii : err\n");
+
+	printf("\n\tFT_isalnum:\n");
+	if (test_ft_isalnum() == -1)
+		printf("isalnum : err\n");
+
+	printf("\n\tFT_isdigit:\n");
+	if (test_ft_isdigit() == -1)
+		printf("isdigit : err\n");
+
+	printf("\n\tFT_isalpha:\n");
+	if (test_ft_isalpha() == -1)
+		printf("isalpha : err\n");
+
+	printf("\n\tFT_strcat:\n");
+	if (test_ft_strcat() == -1)
+		printf("strcat : err\n");
+	
+	printf("\n\tFT_bzero:\n");
+	if (test_ft_bzero() == -1)
+		printf("bzero : err\n");
+
+	printf("\n\tFT_TOLOWER:\n");
+	if (test_ft_tolower() == -1)
+		printf("tolower : err\n");
+
+	printf("\n\tFT_TOUPPER:\n\n");
+	if (test_ft_toupper() == -1)
+		printf("toupper : err\n");
+>>>>>>> 5be5be142621f3a32a7a0525092216d5f7c59022
 	
 	printf("\nEND\n");
 	return (0);
@@ -792,6 +862,7 @@ int	main()
 
 // int main(int ac, const char **av)
 // {
+<<<<<<< HEAD
 // 	// printf("Test00\n");
 // 	// ft_cat(0);
 // 	// printf("Test00 end\n\n");
@@ -807,6 +878,23 @@ int	main()
 // 	// printf("Test03\n");
 // 	// ft_cat(-42);
 // 	// printf("Test03 end\n");
+=======
+// 	printf("Test00\n");
+// 	ft_cat(0);
+// 	printf("Test00 end\n\n");
+	
+// 	printf("Test01 file:[%s]\n", __FILE__);
+// 	ft_cat(open(__FILE__, O_RDONLY));
+// 	printf("Test01 end\n\n");
+	
+// 	printf("Test02 file:[%s]\n", av[0]);
+// 	ft_cat(open(av[0], O_RDONLY));
+// 	printf("Test02 end\n");
+	
+// 	printf("Test03\n");
+// 	ft_cat(-42);
+// 	printf("Test03 end\n");
+>>>>>>> 5be5be142621f3a32a7a0525092216d5f7c59022
 	
 // 	(void)ac;
 // 	(void)av;
