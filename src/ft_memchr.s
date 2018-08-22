@@ -31,7 +31,7 @@ _check_n:
 	add rcx, 1
 	mov rdi, [rsp + 8]		;set to string address
 	mov rax, [rsp + 16]		;set le char a trouver
-	sld
+	; sld
 	repne scasb
 
 	cmp rcx, 0

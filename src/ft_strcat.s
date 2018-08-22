@@ -1,13 +1,8 @@
 
-section .data
-	fmt db "test: [%d]", 10, 0
-
 section	.text
 	global	_ft_strcat
 	extern	_ft_strlen
 	extern	_ft_memcpy
-
-	extern	_printf
 
 _ft_strcat:
 	push rbp
@@ -37,3 +32,5 @@ _end:
 	add rsp, 32
 	pop rbp
 	ret
+
+

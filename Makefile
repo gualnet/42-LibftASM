@@ -6,13 +6,13 @@
 #    By: galy <galy@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/05/09 15:00:23 by galy              #+#    #+#              #
-#    Updated: 2018/08/21 20:54:08 by galy             ###   ########.fr        #
+#    Updated: 2018/08/22 17:00:55 by galy             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libfts.a
 CC		=	clang
-# CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
 # CFLAGS	=	-Wall -Werror -Wextra -fsanitize=address -g
 # CFLAGS	=	-fsanitize=address
 NA		=	nasm
@@ -65,19 +65,19 @@ OBJP		= $(addprefix $(OBJDIR)/, $(SRC:.s=.o))
 ####RULEZ####
 
 all			: OBJD reset_cursor $(NAME)
-#	@nasm -v
+# @nasm -v
 
 $(NAME) : $(OBJP)
 	@$(CC) $(CFLAGS) -I$(INCDIR) -c main_2.c -o $(OBJDIR)/main_2.o
 	@$(CC) $(CFLAGS) -I$(INCDIR) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
-	@printf "$(CUR_RST)$(CUR_SVE)$(CYELLOW)BUILD LIBFTASM Objects: main.s$(CRESET)$(CUR_CLR)"
-	@printf "$(CUR_RST)$(CUR_SVE)$(CGREEN)BUILD LIBFTASM Objects: SUCCESS$(CRESET)$(CUR_CLR)"
+# @printf "$(CUR_RST)$(CUR_SVE)$(CYELLOW)BUILD LIBFTASM Objects: main.s$(CRESET)$(CUR_CLR)"
+# @printf "$(CUR_RST)$(CUR_SVE)$(CGREEN)BUILD LIBFTASM Objects: SUCCESS$(CRESET)$(CUR_CLR)"
 	@printf "\n"
 
 	@ar -rc $(NAME) $^
 	@$(CC) $(CFLAGS) $(OBJDIR)/main.o $^ -o main_test -L. -lfts
 	@$(CC) $(CFLAGS) $(OBJDIR)/main_2.o $^ -o main_test_2 -L. -lfts
-	@printf "$(CUR_RST)$(CUR_SVE)$(CGREEN)BUILD LIBFTASM main_test: SUCCESS$(CRESET)$(CUR_CLR)"
+# @printf "$(CUR_RST)$(CUR_SVE)$(CGREEN)BUILD LIBFTASM main_test: SUCCESS$(CRESET)$(CUR_CLR)"
 
 clean		:
 	@$(RM) -r $(OBJDIR)
@@ -86,6 +86,7 @@ clean		:
 fclean		: clean
 	@$(RM) $(NAME)
 	@$(RM) main_test
+	@$(RM) main_test_2
 	@printf "FCLEAN: SUCCESS\n"
 
 re			: fclean print_inter_line all
@@ -96,7 +97,6 @@ re			: fclean print_inter_line all
 $(OBJDIR)/%.o: $(SRCDIR)/%.s
 	@$(NA) $(NAFLAG) $^ -o $@
 	@printf "$(CUR_RST)$(CUR_SVE)$(CYELLOW)BUILD LIBFTASM Objects: $^$(CRESET)$(CUR_CLR)"
-#	@sleep 0.1
 
 test		:
 	$(CC) -c $(SRCDIR)/main.c -o $(OBJDIR)/main.o
