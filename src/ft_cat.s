@@ -19,7 +19,9 @@ _ft_cat:
 	xor rax, rax
 	cmp edi, eax
 	je _exit_err_fd
+	jl _minus_fd
 
+_back_in_the_game:
 	mov r15, buff
 	mov r14, rdi
 
@@ -49,6 +51,10 @@ _read_lp:
 
 	mov rax, 0
 	jmp _end
+
+_minus_fd:
+	mov rdi, 1
+	jmp _back_in_the_game
 
 _exit_err_fd:
 

@@ -6,7 +6,7 @@
 /*   By: galy <galy@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 12:52:20 by galy              #+#    #+#             */
-/*   Updated: 2018/08/22 16:58:16 by galy             ###   ########.fr       */
+/*   Updated: 2018/08/22 17:17:19 by galy             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -795,26 +795,26 @@ int	main()
 	return (0);
 }
 
-// int main(int ac, const char **av)
-// {
-// 	printf("Test00\n");
-// 	ft_cat(0);
-// 	printf("Test00 end\n\n");
+int main(int ac, const char **av)
+{
+	printf("Test00\n");
+	ft_cat(0);
+	printf("Test00 end\n\n");
 	
-// 	printf("Test01 file:[%s]\n", __FILE__);
-// 	ft_cat(open(__FILE__, O_RDONLY));
-// 	printf("Test01 end\n\n");
+	printf("Test01 file:[%s]\n", __FILE__);
+	ft_cat(open(__FILE__, O_RDONLY));
+	printf("Test01 end\n\n");
 	
-// 	printf("Test02 file:[%s]\n", av[0]);
-// 	ft_cat(open(av[0], O_RDONLY));
-// 	printf("Test02 end\n");
+	printf("Test02 file:[%s]\n", av[0]);
+	ft_cat(open(av[0], O_RDONLY));
+	printf("Test02 end\n");
 	
-// 	printf("Test03\n");
-// 	ft_cat(-42);
-// 	printf("Test03 end\n");
+	printf("Test03\n");
+	ft_cat(-42);
+	printf("\nTest03 end\n");
 	
-// 	(void)ac;
-// 	(void)av;
+	(void)ac;
+	(void)av;
 
-// 	return (0);
-// }
+	return (0);
+}
